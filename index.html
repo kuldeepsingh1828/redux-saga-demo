@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awesome Todo App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            width: 70%;
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #ddd;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Awesome Todo App</h1>
+        <div>
+            <input type="text" id="todoInput" placeholder="Enter a todo">
+            <button id="addTodo">ADD TODO</button>
+        </div>
+
+        <h2>Newly Added Todos</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Todo</th>
+                </tr>
+            </thead>
+            <tbody id="newlyAddedTodos">
+                <!-- Newly added todos will be displayed here -->
+            </tbody>
+        </table>
+
+        <h2>Last Updated Todos</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Todo</th>
+                </tr>
+            </thead>
+            <tbody id="lastUpdatedTodos">
+                <!-- Last updated todos will be displayed here -->
+            </tbody>
+        </table>
+
+        <h2>Deleted Todos</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Todo</th>
+                </tr>
+            </thead>
+            <tbody id="deletedTodos">
+                <!-- Deleted todos will be displayed here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        const todoInput = document.getElementById('todoInput');
+        const addTodoButton = document.getElementById('addTodo');
+        const newlyAddedTodos = document.getElementById('newlyAddedTodos');
+        const lastUpdatedTodos = document.getElementById('lastUpdatedTodos');
+        const deletedTodos = document.getElementById('deletedTodos');
+
+        addTodoButton.addEventListener('click', () => {
+            const todoText = todoInput.value.trim();
+
+            if (todoText !== '') {
+                // Add the newly added todo to the list
+                const newRow = document.createElement('tr');
+                const newCell = document.createElement('td');
+                newCell.textContent = todoText;
+                newRow.appendChild(newCell);
+                newlyAddedTodos.appendChild(newRow);
+
+                // Clear the input field
+                todoInput.value = '';
+
+                // TODO: Implement functionality for last updated and deleted todos
+            }
+        });
+    </script>
+</body>
+
+</html>
